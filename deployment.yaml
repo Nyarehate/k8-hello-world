@@ -1,0 +1,25 @@
+# KK8 deployment configuration file to edit when doing a new deploy
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: second-app-deployment
+## this is where the actual configs are located
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+     app: second-app
+     tier: backend 
+  template:
+    metadata:
+      labels:
+        app: second-app
+        tier: backend
+    spec:
+      containers:
+        - name: second-node
+          image: crescents/kube-hello-world
+        # To add more containers with different images
+        # - name:
+        # - image: 
